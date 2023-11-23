@@ -22,29 +22,12 @@ const StudentList = (props) => {
     // Lògiga per afegir o editar estudiants
     const isItemKey = props.detallsEstudiant.key;
     if (isItemKey) {
-      // Comprovem si l'estudiant ja existeix a la llista
-      const i = items.findIndex((item) => item.key === isItemKey);
-      if (i > -1) {
-        // Si l'estudiant ja existeix, actualitzem les dades. Hem d'evitar mutar l'array original
-        const newItems = [...items];
-        newItems[i] = props.detallsEstudiant;
-        setItems(newItems);
-      } else {
         setItems((prevItems) => [...prevItems, props.detallsEstudiant]);
-      }
     }
     // Executem la funció de borrar estudiant per l'ID seleccionat
   }, [props.detallsEstudiant, props.action]);
 
-  // Per assegurar que es renderitza correctament la llista d'estudiants
-  // Afegim aquest useEffect cada cop que es modifiqui l'array d'estudiants "items["
-  // Com que això només passa quan es fa un delete o un edit,
-  // tornem a posar a zero els detalls de l'estudiant i l'acció
-  useEffect(() => {
-    props.setDetallsEstudiant({});
-    props.setAction('');
-  }, [items]);
-
+  
   return (
     <table className="m-3 table-auto rounded-lg">
       <thead className="bg-blue-500 p-2 px-4 py-2 font-bold text-white">

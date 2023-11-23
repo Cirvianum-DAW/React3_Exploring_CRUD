@@ -6,16 +6,6 @@ const Form = (props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [btnValue, setBtnValue] = useState('Inscripció');
-  const [studentID, setStudentID] = useState('');
-
-  // handle click of cancel button while editing
-
-  const handleClickCancel = (event) => {
-    handleInputReset('', '', '');
-    setBtnValue('Inscripció');
-    event.preventDefault(); // Necessari per evitar que el form es refresqui
-  };
 
   // handle click event of submit/edit button
   const handleClick = (event) => {
@@ -25,7 +15,7 @@ const Form = (props) => {
     const randomKey = Math.floor(1000 + Math.random() * 9000);
 
     // Si estem fent una inscripció, generem un ID nou, sino assignem l'ID de l'estudiant
-    const id = btnValue === 'Inscripció' ? randomKey : studentID;
+    const id = randomKey;
     props.setDetallsEstudiant({
       key: id,
       fname: firstName,
@@ -35,7 +25,6 @@ const Form = (props) => {
       edit: (
         <MdEdit
           className="text-3xl text-blue-500 hover:text-red-500"
-          onClick={() => handleEdit(id)}
         />
       ),
       delete: (
@@ -45,7 +34,6 @@ const Form = (props) => {
         />
       ),
     });
-    setBtnValue('Inscripció');
     event.preventDefault(); // Necessari per evitar que el form es refresqui
   };
 
@@ -61,11 +49,6 @@ const Form = (props) => {
     setEmail(email);
   };
 
-  const handleEdit = (studentID) => {
-    handleInputReset(firstName, lastName, email);
-    setStudentID(studentID);
-    setBtnValue('Actualitzar');
-  };
 
   return (
     <div className="flex w-3/4 justify-center">
@@ -101,10 +84,10 @@ const Form = (props) => {
               onChange={(event) => handleInputChange(setEmail, event)}
             />
           </li>
-          <li className="flex justify-around">
+          <li className="flex w-3/4 justify-around">
             <input
-              className="mb-4 rounded bg-blue-500 p-2 px-4 py-2 font-bold text-white hover:bg-blue-700"
-              type="submit"
+className="mb-4 rounded bg-blue-500 p-2 px-4 py-2 font-bold text-white hover:bg-blue-700"              
+type="submit"
               name="Enrol"
               alt="Enrol"
               value={btnValue}
