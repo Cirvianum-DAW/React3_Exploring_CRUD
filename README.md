@@ -35,7 +35,7 @@ Hi ha alguna modificació respecte l'explicació anterior per tal d'acabar resol
 
 Si t'hi fixes, quan troba l'estudiant que volem eliminar, verifiquem a quin programa pertany (item.program) per tal de poder restaurar les places corresponent amb `props.restaurarPlaces(item.program)`.
 
-Un altre afegit important és que, com que les funcions a React son asíncrones, ens podem trobar que a vegades no es mostren les dades correctes immediatament després d'una acció (borrar un estudiant per exemple). De moment hem afegit un nou `useEffect` a `StudentList.jsx` que s'encarrega de forçar un renderitzat quan hi ha un canvi a la variable d'estat `items` (que és la nostra llista d'estudiants.
+Un altre afegit important és que, com que les funcions a React son asíncrones, ens podem trobar que a vegades no es mostren les dades correctes immediatament després d'una acció (borrar un estudiant per exemple). No sembla una mala opció incorporar un `useEffect()` a `StudentList.jsx` sense una gran lògica que forçarà un nou renderitzat cada vegada que la variable d'estat `items` es modifiqui (que és la nostra llista d'estudiants).
 
 ```jsx
 useEffect(() => {
