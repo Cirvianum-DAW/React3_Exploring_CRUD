@@ -2,7 +2,7 @@
 
 Fins ara hem vist com s'interconnecten els diferents components i com podem passar informació entre ells així com alguns dels principals **hooks** de React: `useState` i `useEffect`. 
 
-Anem a continuar amb la nostra aplicació per tal de donar solució al repte que havíem plantejat i continuar millorant les característiques del CRUD sobre la nostra aplicació. 
+Anem a continuar amb la nostra aplicació per tal de donar solució al repte que havíem plantejat i continuar millorant les característiques del CRUD. 
 
 
 ## React developer tools
