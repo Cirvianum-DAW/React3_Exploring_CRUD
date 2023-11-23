@@ -13,8 +13,6 @@ const Form = (props) => {
     props.setPlacesDisponibles(props.placesActuals - 1);
     // Generació d'un ID per l'estudiant - 4digit
     const randomKey = Math.floor(1000 + Math.random() * 9000);
-
-    // Si estem fent una inscripció, generem un ID nou, sino assignem l'ID de l'estudiant
     const id = randomKey;
     props.setDetallsEstudiant({
       key: id,
@@ -53,7 +51,7 @@ const Form = (props) => {
   return (
     <div className="flex w-3/4 justify-center">
       <form className="enrolForm w-2/3" name="enrolForm">
-        <ul className="ulEnrol">
+        <ul className="ulEnrol flex flex-col w-full items-stretch">
           <li className="mb-2">
             <input
               className="border-1 mb-4 w-full rounded-lg border-dotted border-black bg-gray-200 p-2"
@@ -84,22 +82,14 @@ const Form = (props) => {
               onChange={(event) => handleInputChange(setEmail, event)}
             />
           </li>
-          <li className="flex w-3/4 justify-around">
+          <li className='self-center'>
             <input
-className="mb-4 rounded bg-blue-500 p-2 px-4 py-2 font-bold text-white hover:bg-blue-700"              
-type="submit"
+            className="mb-4 rounded bg-blue-500 p-2 px-4 py-2 font-bold text-white hover:bg-blue-700"
+            type="submit"
               name="Enrol"
               alt="Enrol"
-              value={btnValue}
+              value="Inscripció"
               onClick={handleClick}
-            />
-            <input
-              className="mb-4 rounded bg-blue-500 p-2 px-4 py-2 font-bold text-white hover:bg-blue-700"
-              type="submit"
-              name="btnCancel"
-              alt="Cancel"
-              value="Cancel"
-              onClick={handleClickCancel}
             />
           </li>
         </ul>

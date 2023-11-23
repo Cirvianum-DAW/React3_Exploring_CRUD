@@ -7,9 +7,8 @@ const StudentList = (props) => {
     if (props.action === 'delete') {
       // filtrem l'array d'estudiants per eliminar l'estudiant seleccionat
       const newItems = items.filter((item) => {
-        console.log(item.key, props.selectedItemId);
         if (item.key === props.selectedItemId) {
-          // restaurem les places disponisbles (+1)
+          // restaurem les places disponisbles del tipus d'estudiant corresponent (+1)
           props.restaurarPlaces(item.program);
           return false;
         } else {
@@ -19,7 +18,7 @@ const StudentList = (props) => {
       setItems(newItems);
     }
 
-    // Lògiga per afegir o editar estudiants
+    // Lògiga per afegir estudiants
     const isItemKey = props.detallsEstudiant.key;
     if (isItemKey) {
         setItems((prevItems) => [...prevItems, props.detallsEstudiant]);
@@ -27,7 +26,11 @@ const StudentList = (props) => {
     // Executem la funció de borrar estudiant per l'ID seleccionat
   }, [props.detallsEstudiant, props.action]);
 
-  
+  useEffect(() => {
+    props.setDetallsEstudiant({});
+    props.setAction('');
+  }, [items]);
+
   return (
     <table className="m-3 table-auto rounded-lg">
       <thead className="bg-blue-500 p-2 px-4 py-2 font-bold text-white">
